@@ -11,7 +11,7 @@ version: 2.1
             name: Show current branch
             command: echo ${CURRENT_BRANCH}
         - restore_chache:
-            key:
+            keys:
               - app-{{ checksum "package.json" }}
               - app-
         - run:
