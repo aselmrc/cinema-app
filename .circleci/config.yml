@@ -100,46 +100,9 @@ version: 2.1
     build_and_deploy:
       jobs:
         - build
-        - linting:
-            requires:
-              - build
-            filters:
-              branches:
-                only:
-                  - develop
-                  - staging
-                  - master
-        - prettier:
-            requires:
-              - build
-            filters:
-              branches:
-                only:
-                  - develop
-                  - staging
-                  - master
-        - unit-test:
-            requires:
-              - linting
-              - prettier
-            filters:
-              branches:
-                only:
-                  - develop
-                  - staging
-                  - master
-        - publish-to-docker-hub:
-            requires:
-              - unit-test
-            filters:
-              branches:
-                only:
-                  - develop
-                  - staging
-                  - master
         - deploy-to-aws-s3:
             requires:
-              - publish-to-docker-hub
+              - build
             filters:
               branches:
                 only:
@@ -149,15 +112,6 @@ version: 2.1
         - deploy-to-aws-cloudfront:
             requires:
               - deploy-to-aws-s3
-            filters:
-              branches:
-                only:
-                  - develop
-                  - staging
-                  - master
-        - notify-via-slack:
-            requires:
-              - deploy-to-aws-cloudfront
             filters:
               branches:
                 only:
