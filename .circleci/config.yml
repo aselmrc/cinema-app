@@ -96,27 +96,27 @@ jobs:
               aws cloudfront create-invalidation --distribution-id ${DEV_DISTRIBUTION_ID} --paths /\*
             fi
 
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - build
-      - deploy-to-aws-s3:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
-      - deploy-to-aws-cloudfront:
-          requires:
-            - deploy-to-aws-s3
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
+  workflows:
+    version: 2
+    build-deploy:
+      jobs:
+        - build
+        - deploy-to-aws-s3:
+            requires:
+              - build
+            filters:
+              branches:
+                only:
+                  - develop
+                  - staging
+                  - master
+        - deploy-to-aws-cloudfront:
+            requires:
+              - deploy-to-aws-s3
+            filters:
+              branches:
+                only:
+                  - develop
+                  - staging
+                  - master
 
