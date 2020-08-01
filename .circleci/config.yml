@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Show current branch
           command: echo ${CURRENT_BRANCH}
-      - restore_chache:
+      - restore-chache:
           keys:
             - app-{{ checksum "package.json" }}
             - app-
