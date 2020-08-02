@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   build:
     docker:
@@ -98,7 +97,7 @@ jobs:
 
 workflows:
   version: 2
-  build-and-deploy:
+  build_and_deploy:
     jobs:
       - build
       - deploy-to-aws-s3:
