@@ -1,18 +1,17 @@
 version: 2.1
-
 jobs:
   build:
     docker:
-      - image: circleci/node:14.5.0
+      - image: 'circleci/node:14.5.0'
     working_directory: ~/repo
     steps:
       - checkout
       - run:
           name: Show current branch
-          command: echo ${CURRENT_BRANCH}
+          command: 'echo ${CURRENT_BRANCH}'
       - restore_cache:
           keys:
-            - app-{{ checksum "package.json" }}
+            - 'app-{{ checksum "package.json" }}'
             - app-
       - run:
           name: Install dependencies
@@ -20,17 +19,16 @@ jobs:
       - save_cache:
           path:
             - node_modules
-          key: app-{{ checksum "package.json" }}
-
+          key: 'app-{{ checksum "package.json" }}'
   deploy-to-aws-s3:
     docker:
-      - image: circleci/node:14.5.0
+      - image: 'circleci/node:14.5.0'
     working_directory: ~/repo
     steps:
       - checkout
       - run:
           name: Show current branch
-          command: echo ${CURRENT_BRANCH}
+          command: 'echo ${CURRENT_BRANCH}'
       - run:
           name: Installing AWS CLI
           working_directory: /
@@ -60,13 +58,13 @@ jobs:
             fi
   deploy-to-aws-cloudfront:
     docker:
-      - image: circleci/node:14.5.0
+      - image: 'circleci/node:14.5.0'
     working_directory: ~/repo
     steps:
       - checkout
       - run:
           name: Show current branch
-          command: echo ${CURRENT_BRANCH}
+          command: 'echo ${CURRENT_BRANCH}'
       - run:
           name: Installing AWS CLI
           working_directory: /
@@ -95,7 +93,6 @@ jobs:
             else
               aws cloudfront create-invalidation --distribution-id ${DEV_DISTRIBUTION_ID} --paths /\*
             fi
-
 workflows:
   build_and_deploy:
     jobs:
@@ -118,5 +115,3 @@ workflows:
                 - develop
                 - staging
                 - master
-
-
