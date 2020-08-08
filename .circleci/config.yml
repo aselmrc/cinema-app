@@ -107,7 +107,7 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - linting
+      - linting:
           requires:
             - build
           filters:
