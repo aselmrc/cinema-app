@@ -3,7 +3,7 @@ executors:
   app-executor:
     docker:
       - image: 'circleci/node:14.5.0'
-      working_directory: ~/repo
+    working_directory: ~/repo
 
 aliases:
   - &show-current-branch-name
