@@ -118,14 +118,14 @@ jobs:
             else
               aws cloudfront create-invalidation --distribution-id ${DEV_DISTRIBUTION_ID} --paths /\*
             fi
-    notify-via-slack:
-      executor: slack-executor
-      steps:
-        - slack/notify:
-            message: "${CIRCLE_BRANCH} branch deployment to aws s3 and cloudfront is complete."
-            webhook: $SLACK_WEBHOOK
-        - slack/status:
-            webhook: $SLACK_WEBHOOK
+  notify-via-slack:
+    executor: slack-executor
+    steps:
+      - slack/notify:
+          message: "${CIRCLE_BRANCH} branch deployment to aws s3 and cloudfront is complete."
+          webhook: $SLACK_WEBHOOK
+      - slack/status:
+          webhook: $SLACK_WEBHOOK
 workflows:
   build-and-deploy:
     jobs:
