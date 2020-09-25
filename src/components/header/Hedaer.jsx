@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import logo from '../../logo.png';
 import './Header.scss';
 
@@ -76,7 +76,6 @@ function Header(props) {
                   </li>
                 )
               }
-
               <input
                 type="text"
                 className="search-input"
@@ -88,6 +87,6 @@ function Header(props) {
       </div>
     </>
   );
-}
+};
 
 export default Header;
