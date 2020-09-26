@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment, useRef } from 'react';
-import PropType from 'prop-types';
-import './Rating.scss';
 import PropTypes from 'prop-types';
+import './Rating.scss';
 
 function Rating(props) {
   const { rating, totalStars, className } = props;
@@ -9,7 +8,7 @@ function Rating(props) {
   const ratingRef = useRef();
 
   useEffect(() => {
-    setNumberOfStars([...Array(totalStars).keys()].map(i => i + 1));
+    setNumberOfStars([...Array(totalStars).keys()].map((i) => i + 1));
     let persentage;
     if (rating <= 5) {
       persentage = (rating / 5) * 100;
@@ -21,20 +20,22 @@ function Rating(props) {
   }, [rating, totalStars]);
 
   return (
-    <div className='star-rating'>
+    <div className="star-rating">
       <div className={`back-stars ${className}`}>
-        {numberOfStars && numberOfStars.map((i) => (
-          <Fragment key={i}>
-            <i className='fa fa-star' aria-hidden='true'></i>
-          </Fragment>
-        ))}
-
-        <div className={`front-stars ${className}`} ref={ratingRef}>
-          {numberOfStars && numberOfStars.map((i) => (
+        {numberOfStars &&
+          numberOfStars.map((i) => (
             <Fragment key={i}>
-              <i className='fa fa-star' aria-hidden='true'></i>
+              <i className="fa fa-star" aria-hidden="true"></i>
             </Fragment>
           ))}
+
+        <div className={`front-stars ${className}`} ref={ratingRef}>
+          {numberOfStars &&
+            numberOfStars.map((i) => (
+              <Fragment key={i}>
+                <i className="fa fa-star" aria-hidden="true"></i>
+              </Fragment>
+            ))}
         </div>
       </div>
     </div>
@@ -45,6 +46,6 @@ Rating.propTypes = {
   rating: PropTypes.number.isRequired,
   totalStars: PropTypes.number.isRequired,
   className: PropTypes.string.isRequired
-}
+};
 
 export default Rating;
