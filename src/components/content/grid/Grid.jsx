@@ -1,35 +1,50 @@
-import React from 'react';
-import './Grid.scss';
+import React, { useEffect, useState } from 'react';
 import Rating from '../rating/Rating';
+import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
+import './Grid.scss';
+import { connect } from 'react-redux';
+import { IMAGE_URL } from '../../../services/movie.services';
+import LazyImage from '../../lazy-image/LazyImage';
 
-function Grid(props) {
-  // eslint-disable-next-line react/prop-types
-  const { images } = props;
+function Grid({ list }) {
+  const [movieData, setMovieData] = useState([]);
+
+  useEffect(() => {
+    setMovieData(list);
+  }, [list]);
 
   return (
     <>
       <div className="grid">
-        {
-          // eslint-disable-next-line react/prop-types
-          images.map((image, i) => (
-            <div className="grid-cell" key={i} style={{ backgroundImage: `url(${image.url})` }}>
+        {movieData.map((data, i) => (
+          <div key={uuidv4()}>
+            <LazyImage className="grid-cell" key={i} src={`${IMAGE_URL}${data.poster_path}`} alt="placeholder">
               <div className="grid-read-more">
                 <button className="grid-cell-button">Read More</button>
               </div>
               <div className="grid-detail">
-                <span className="grid-detail-title">Mission possible Mission possible Mission possible Mission possible Mission possible</span>
+                <span className="grid-detail-title">{data.title}</span>
                 <div className="grid-detail-rating">
-                  <Rating rating={image.rating} totalStars={10} />
+                  <Rating rating={data.vote_average} totalStars={10} />
                   &nbsp;&nbsp;
-                  <div className="grid-vote-avarage">{image.rating}</div>
+                  <div className={data.vote_average}>{data.vote_average}</div>
                 </div>
               </div>
-            </div>
-          ))
-        }
+            </LazyImage>
+          </div>
+        ))}
       </div>
     </>
   );
 }
 
-export default Grid;
+Grid.propTypes = {
+  list: PropTypes.array.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  list: state.movies.list
+});
+
+export default connect(mapStateToProps, {})(Grid);
