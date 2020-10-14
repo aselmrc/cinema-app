@@ -4,30 +4,33 @@ import './Slideshow.scss';
 
 function Slideshow(props) {
   const { images, auto, showArrows } = props;
-
   const [state, setState] = useState({
     slideShow: images[0],
     slideIndex: 0
   });
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [sliderInterval, setsliderInterval] = useState(0);
-
+  const [sliderInterval, setSliderInterval] = useState(0);
   const { slideShow, slideIndex } = state;
   let currentSlideIndex = 0;
 
   useEffect(() => {
+    setState({
+      ...state,
+      slideIndex: 0,
+      slideShow: images[0]
+    });
     if (auto) {
       const timeInterval = setInterval(() => {
         autoMoveSlide();
       }, 5000);
-      setsliderInterval(timeInterval);
+      setSliderInterval(timeInterval);
       return () => {
         clearInterval(timeInterval);
         clearInterval(sliderInterval);
       };
     }
     // eslint-disable-next-line
-  }, []);
+  }, [images]);
 
   const autoMoveSlide = () => {
     let lastIndex = 0;
@@ -79,16 +82,11 @@ function Slideshow(props) {
     });
     return <div className="slider-nav">{listIndicators}</div>;
   };
+
   return (
     <>
       <div className="slider">
-        <div className="slider-slides">
-          {images && images.length && slideShow && (
-            <div className="slider-image" style={{ backgroundImage: `url(${slideShow.url})` }}>
-              {' '}
-            </div>
-          )}
-        </div>
+        <div className="slider-slides">{images && images.length && slideShow && <div className="slider-image" style={{ backgroundImage: `url(${slideShow.url})` }}></div>}</div>
         <Indicators currentSlide={slideIndex} />
         {showArrows ? <RenderArrows /> : null}
       </div>
