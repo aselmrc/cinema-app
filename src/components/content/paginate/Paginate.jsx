@@ -19,7 +19,7 @@ function Paginate(props) {
       <button className={page > 1 ? 'paginate-button' : 'paginate-button disable'} onClick={() => paginate('prev')}>
         Prev
       </button>
-      <button className={page < 10 ? 'paginate-button' : 'paginate-button disable'} onClick={() => paginate('next')}>
+      <button className={page < `${totalPages}` ? 'paginate-button' : 'paginate-button disable'} onClick={() => paginate('next')}>
         Next
       </button>
     </>
