@@ -55,6 +55,7 @@ function Header({ setMovieType, getMovies, page, totalPages, setResponsePageNumb
         throw error;
       }
     }
+    // eslint-disable-next-line
   }, [path, url, routesArray, pathURL]);
 
   useEffect(() => {
@@ -64,6 +65,7 @@ function Header({ setMovieType, getMovies, page, totalPages, setResponsePageNumb
       setError({ message: `Page with pathname ${location.pathname} not found.`, statusCode: 404 });
       throw error;
     }
+    // eslint-disable-next-line
   }, [errors]);
 
   useEffect(() => {
@@ -78,6 +80,7 @@ function Header({ setMovieType, getMovies, page, totalPages, setResponsePageNumb
         setDisableSearch(true);
       }
     }
+    // eslint-disable-next-line
   }, [type, disableSearch, location, path]);
 
   const setMovieTypeUrl = (type) => {
