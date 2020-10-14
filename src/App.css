@@ -1,0 +1,11 @@
+.app {
+  text-align: center; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+
+a:active, a:focus, a:hover {
+  color: #fff; }
+
+/*# sourceMappingURL=App.css.map */
