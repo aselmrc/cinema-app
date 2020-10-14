@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Main.scss';
 import { pathURL } from '../../redux/actions/routes';
+import SearchResult from '../content/search-result/SearchResult';
 
-function Main(props) {
-  const { loadMoreMovies, page, errors, totalPages, setResponsePageNumber, pathURL, match } = props;
+function Main({ loadMoreMovies, page, errors, totalPages, setResponsePageNumber, pathURL, match, searchResult }) {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
   const mainRef = useRef();
@@ -47,7 +47,7 @@ function Main(props) {
     <>
       {!errors.message && !errors.statusCode && (
         <div className="main" ref={mainRef} onScroll={() => handleScroll()}>
-          {loading ? <Spinner /> : <MainContent />}
+          {loading ? <Spinner /> : <>{searchResult && searchResult.length === 0 ? <MainContent /> : <SearchResult />}</>}
           <div ref={bottomLineRef}></div>
         </div>
       )}
@@ -61,6 +61,7 @@ Main.propTypes = {
   totalPages: PropTypes.number,
   loadMoreMovies: PropTypes.func,
   setResponsePageNumber: PropTypes.func,
+  searchResult: PropTypes.array,
   match: PropTypes.object,
   pathURL: PropTypes.func,
   errors: PropTypes.object
@@ -70,7 +71,8 @@ const mapStateToProps = (state) => ({
   list: state.movies.list,
   page: state.movies.page,
   totalPages: state.movies.totalPages,
-  errors: state.errors
+  errors: state.errors,
+  searchResult: state.movies.searchResult
 });
 
 export default connect(mapStateToProps, { loadMoreMovies, setResponsePageNumber, pathURL })(Main);
