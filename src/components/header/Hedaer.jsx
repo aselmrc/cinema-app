@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getMovies, searchQuery, searchResult, setMovieType, setResponsePageNumber } from '../../redux/actions/movie';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
-import logo from '../../logo.png';
+import logo from '../../cinema-logo.svg';
 import './Header.scss';
 import { setError } from '../../redux/actions/errors';
 import { pathURL } from '../../redux/actions/routes';
@@ -11,7 +11,7 @@ import { pathURL } from '../../redux/actions/routes';
 function Header({ searchResult, searchQuery, setMovieType, getMovies, page, totalPages, setResponsePageNumber, routesArray, path, url, pathURL, setError, errors }) {
   let [navClass, setNavClass] = useState(false);
   let [menuClass, setMenuClass] = useState(false);
-  const [type, setType] = useState('now-playing');
+  const [type, setType] = useState('now_playing');
   const [hideHeader, setHideHeader] = useState(false);
   const [disableSearch, setDisableSearch] = useState(false);
   const [search, setSearch] = useState('');

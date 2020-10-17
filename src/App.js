@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { appRoutes } from './redux/actions/routes';
 import './App.scss';
 import ErrorBoundary from './components/error/ErrorBoundary';
+import Details from './components/content/details/Details';
 
 const App = (props) => {
   const { appRoutes } = props;
@@ -19,8 +20,8 @@ const App = (props) => {
     },
     {
       id: 2,
-      path: '/:id/:name/details'
-      // component: Details
+      path: '/:id/:name/details',
+      component: Details
     }
   ];
 

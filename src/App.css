@@ -6,6 +6,7 @@ a {
   color: inherit; }
 
 a:active, a:focus, a:hover {
-  color: #fff; }
+  color: #fff;
+  text-decoration: none; }
 
 /*# sourceMappingURL=App.css.map */
