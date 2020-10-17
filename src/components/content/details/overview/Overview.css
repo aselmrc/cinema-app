@@ -1,0 +1,82 @@
+.overview {
+  display: grid;
+  grid-template-columns: 66.667% 33.334%;
+  margin-top: 40px; }
+
+.overview-column-1 {
+  color: #abb7c4;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 300; }
+  .overview-column-1 .cast .div-title {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 1px solid #233a50;
+    height: 27px;
+    line-height: 22.5px;
+    margin: 30px 0 25px 0;
+    padding-bottom: 30px; }
+  .overview-column-1 .cast table {
+    background-color: inherit !important;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px; }
+  .overview-column-1 .cast td,
+  .overview-column-1 .cast th {
+    text-align: left;
+    padding: 8px; }
+  .overview-column-1 .cast td:first-child {
+    width: 70px; }
+    .overview-column-1 .cast td:first-child img {
+      border-radius: 5px;
+      margin-left: -5px; }
+  .overview-column-1 .cast td:nth-child(2) {
+    font-size: 16px;
+    color: #4280bf; }
+
+.overview-column-2 .overview-detail {
+  margin-bottom: 30px;
+  margin-left: 30px;
+  font-size: 14px;
+  color: #abb7c4; }
+  .overview-column-2 .overview-detail .product-company {
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+    .overview-column-2 .overview-detail .product-company img {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      margin-right: 6px; }
+    .overview-column-2 .overview-detail .product-company span {
+      line-height: 25px;
+      font-weight: 300;
+      width: auto;
+      color: #4280bf;
+      padding-right: 5px; }
+  .overview-column-2 .overview-detail h6 {
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 10px; }
+  .overview-column-2 .overview-detail p {
+    font-weight: 300;
+    text-transform: none;
+    line-height: 24px; }
+    .overview-column-2 .overview-detail p a {
+      color: #4280bf;
+      text-decoration: none;
+      padding-right: 5px; }
+    .overview-column-2 .overview-detail p a:not(:last-child):after {
+      content: ","; }
+
+@media (max-width: 1100px) {
+  .overview {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr; }
+
+  .overview-column-2 {
+    margin-top: 30px; } }
+
+/*# sourceMappingURL=Overview.css.map */
