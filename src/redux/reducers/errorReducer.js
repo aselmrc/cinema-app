@@ -8,6 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_ERROR:
+      console.log(action);
       return {
         ...state,
         message: action.payload.message,

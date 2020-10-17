@@ -11,7 +11,7 @@ import { pathURL } from '../../redux/actions/routes';
 function Header({ searchResult, searchQuery, setMovieType, getMovies, page, totalPages, setResponsePageNumber, routesArray, path, url, pathURL, setError, errors }) {
   let [navClass, setNavClass] = useState(false);
   let [menuClass, setMenuClass] = useState(false);
-  const [type, setType] = useState('now-playing');
+  const [type, setType] = useState('now_playing');
   const [hideHeader, setHideHeader] = useState(false);
   const [disableSearch, setDisableSearch] = useState(false);
   const [search, setSearch] = useState('');
@@ -71,6 +71,7 @@ function Header({ searchResult, searchQuery, setMovieType, getMovies, page, tota
 
   useEffect(() => {
     if (path && !errors.message && !errors.statusCode) {
+      console.log(type)
       getMovies(type, page);
       setResponsePageNumber(page, totalPages);
       if (detailsRoute || location.pathname === '/') {

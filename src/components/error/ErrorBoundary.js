@@ -11,7 +11,7 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    this.state({ error, errorInfo });
+    this.setState({ error, errorInfo });
     if (process.env.NODE_ENV === 'production') {
       Sentry.withScope((scope) => {
         scope.setTag('Custom-Tag', 'ErrorBoundary');

@@ -78,7 +78,7 @@ jobs:
       - run:
           name: Run prettier check
           command: npm run prettier:check
-
+  
   deploy-to-aws-s3:
     executor: app-executor
     steps:
