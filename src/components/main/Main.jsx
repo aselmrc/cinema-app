@@ -8,7 +8,7 @@ import './Main.scss';
 import { pathURL } from '../../redux/actions/routes';
 import SearchResult from '../content/search-result/SearchResult';
 
-function Main({ loadMoreMovies, page, errors, totalPages, setResponsePageNumber, pathURL, match, searchResult }) {
+function Main({ loadMoreMovies, page, errors, movieType, totalPages, setResponsePageNumber, pathURL, match, searchResult }) {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
   const mainRef = useRef();
@@ -24,7 +24,6 @@ function Main({ loadMoreMovies, page, errors, totalPages, setResponsePageNumber,
   useEffect(() => {
     pathURL(match.path, match.url);
     setResponsePageNumber(currentPage, totalPages);
-    loadMoreMovies('now_playing', currentPage);
     // eslint-disable-next-line
   }, [currentPage, totalPages]);
 
@@ -33,6 +32,7 @@ function Main({ loadMoreMovies, page, errors, totalPages, setResponsePageNumber,
     if (page < totalPages) {
       pageNumber += 1;
       setCurrentPage(pageNumber);
+      loadMoreMovies(movieType, currentPage);
     }
   };
 
@@ -64,7 +64,8 @@ Main.propTypes = {
   searchResult: PropTypes.array,
   match: PropTypes.object,
   pathURL: PropTypes.func,
-  errors: PropTypes.object
+  errors: PropTypes.object,
+  movieType: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
@@ -72,7 +73,8 @@ const mapStateToProps = (state) => ({
   page: state.movies.page,
   totalPages: state.movies.totalPages,
   errors: state.errors,
-  searchResult: state.movies.searchResult
+  searchResult: state.movies.searchResult,
+  movieType: state.movies.movieType
 });
 
 export default connect(mapStateToProps, { loadMoreMovies, setResponsePageNumber, pathURL })(Main);

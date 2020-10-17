@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './ErrorPage.scss';
 import { setError } from '../../redux/actions/errors';
 
-function ErrorPage({ clearState, setError }) {
+const ErrorPage = ({ clearState, setError }) => {
   const history = useHistory();
 
   const navigateToHomePage = () => {
@@ -23,7 +23,7 @@ function ErrorPage({ clearState, setError }) {
       </div>
     </div>
   );
-}
+};
 
 ErrorPage.propTypes = {
   clearState: PropTypes.func,
