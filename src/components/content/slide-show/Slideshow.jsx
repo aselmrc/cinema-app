@@ -68,8 +68,8 @@ function Slideshow(props) {
   const RenderArrows = () => {
     return (
       <div className="slider-arrows">
-        <div className="slider-arrow slider-arrow--left" onClick={() => moveSlideWithArrows('prev')}></div>
-        <div className="slider-arrow slider-arrow--right" onClick={() => moveSlideWithArrows('next')}></div>
+        <div className="slider-arrow slider-arrow--prev" onClick={() => moveSlideWithArrows('prev')}></div>
+        <div className="slider-arrow slider-arrow--next" onClick={() => moveSlideWithArrows('next')}></div>
       </div>
     );
   };
