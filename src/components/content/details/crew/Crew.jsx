@@ -24,7 +24,7 @@ function Crew({ movie }) {
             <tbody key={uuidv4()}>
               <tr>
                 <td>
-                  <img src={<img src={data.profile_path ? `${IMAGE_URL}${data.profile_path}` : 'http://placehold.it/54x81'} alt="" />} alt=""/>
+                  <img src={<img src={data.profile_path ? `${IMAGE_URL}${data.profile_path}` : 'http://placehold.it/54x81'} alt="" />} alt="" />
                 </td>
                 <td>{data.name}</td>
                 <td>{data.department}</td>
@@ -36,7 +36,7 @@ function Crew({ movie }) {
       </div>
     </>
   );
-};
+}
 
 Crew.propTypes = {
   movie: PropTypes.array

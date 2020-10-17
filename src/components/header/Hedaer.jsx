@@ -71,7 +71,6 @@ function Header({ searchResult, searchQuery, setMovieType, getMovies, page, tota
 
   useEffect(() => {
     if (path && !errors.message && !errors.statusCode) {
-      console.log(type)
       getMovies(type, page);
       setResponsePageNumber(page, totalPages);
       if (detailsRoute || location.pathname === '/') {

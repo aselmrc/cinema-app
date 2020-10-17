@@ -87,7 +87,7 @@ function Details({ movieDetails, movie, pathURL, match }) {
       )}
     </>
   );
-};
+}
 
 Details.propTypes = {
   movie: PropTypes.array,
