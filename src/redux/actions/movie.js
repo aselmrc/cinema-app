@@ -3,7 +3,6 @@ import { GET_MOVIES, MOVIE_CREDITS_URL, MOVIE_DETAILS_URL, MOVIE_IMAGES_URL, MOV
 
 export const getMovies = (type, pageNumber) => async (dispatch) => {
   try {
-    console.log(type, pageNumber);
     const response = await getMoviesRequest(type, pageNumber);
     const { results, payload } = response;
     dispatchMethod(MOVIE_LIST, results, dispatch);

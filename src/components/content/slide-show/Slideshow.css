@@ -58,32 +58,23 @@
   z-index: 1; }
 
 .slider-arrow {
-  background: none;
-  border: none;
-  height: 40px;
-  opacity: 0.5;
-  outline: none;
+  width: 25px;
+  height: 25px;
   position: absolute;
-  transition: opacity 0.25s;
-  padding: 0px;
-  width: 21px;
-  outline: none !important;
+  top: calc(50% - 25px);
   cursor: pointer; }
-  .slider-arrow:hover {
-    opacity: 1; }
-  .slider-arrow::after, .slider-arrow::before {
-    background: #fff;
-    border-radius: 3px;
-    content: "";
-    display: block;
-    height: 23px;
-    position: absolute;
-    width: 5px;
-    left: 8px; }
-  .slider-arrow::before {
-    top: 0; }
-  .slider-arrow::after {
-    bottom: 0; }
+
+.slider-arrow--prev {
+  border-bottom: 5px solid #fff;
+  border-left: 5px solid #fff;
+  transform: rotate(45deg);
+  left: 15px; }
+
+.slider-arrow--next {
+  border-bottom: 5px solid #fff;
+  border-left: 5px solid #fff;
+  transform: rotate(-135deg);
+  right: 15px; }
 
 .slider-arrow--left {
   opacity: 1;
