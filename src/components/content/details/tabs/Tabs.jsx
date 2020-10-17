@@ -27,7 +27,7 @@ function Tabs({ children }) {
       </div>
     </div>
   );
-};
+}
 
 Tabs.propTypes = {
   children: PropTypes.array.isRequired

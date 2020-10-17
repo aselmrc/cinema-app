@@ -25,7 +25,7 @@ function Tab(props) {
       </li>
     </>
   );
-};
+}
 
 Tab.propTypes = {
   activeTab: PropTypes.string.isRequired,

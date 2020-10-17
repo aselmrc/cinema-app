@@ -48,13 +48,13 @@ function Media(props) {
       </div>
     </>
   );
-};
+}
 
 Media.propTypes = {
   movie: PropTypes.array
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   movie: state.movies.movie
 });
 

@@ -119,7 +119,7 @@ function Overview({ movie }) {
       </div>
     </div>
   );
-};
+}
 
 Overview.propTypes = {
   movie: PropTypes.array

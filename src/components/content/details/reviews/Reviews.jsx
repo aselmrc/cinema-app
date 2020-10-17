@@ -23,7 +23,7 @@ function Reviews({ movie }) {
       </div>
     </>
   );
-};
+}
 
 Reviews.propTypes = {
   movie: PropTypes.array
