@@ -24,7 +24,7 @@ function Paginate(props) {
       </button>
     </>
   );
-};
+}
 
 Paginate.propTypes = {
   currentPage: PropTypes.number.isRequired,
