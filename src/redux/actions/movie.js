@@ -1,4 +1,4 @@
-import { MOVIE_LIST, RESPONSE_PAGE, SET_ERROR, LOAD_MORE_RESULTS, MOVIE_TYPE, SEARCH_RESULT, SEARCH_QUERY, MOVIE_DETAILS } from '../types';
+import { MOVIE_LIST, RESPONSE_PAGE, SET_ERROR, LOAD_MORE_RESULTS, MOVIE_TYPE, SEARCH_RESULT, SEARCH_QUERY, MOVIE_DETAILS, CLEAR_MOVIE_DETAILS } from '../types';
 import { GET_MOVIES, MOVIE_CREDITS_URL, MOVIE_DETAILS_URL, MOVIE_IMAGES_URL, MOVIE_REVIEWS_URL, MOVIE_VIDEOS_URL, SEARCH_API_URL } from '../../services/movie.services';
 
 export const getMovies = (type, pageNumber) => async (dispatch) => {
@@ -97,4 +97,8 @@ export const movieDetails = (id) => async (dispatch) => {
       dispatchMethod(SET_ERROR, e.response.data.message, dispatch);
     }
   }
+};
+
+export const clearMovieDetails = () => (dispatch) => {
+  dispatchMethod(CLEAR_MOVIE_DETAILS, [], dispatch);
 };

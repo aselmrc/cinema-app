@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getMovies, searchQuery, searchResult, setMovieType, setResponsePageNumber } from '../../redux/actions/movie';
+import { clearMovieDetails, getMovies, searchQuery, searchResult, setMovieType, setResponsePageNumber } from '../../redux/actions/movie';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import logo from '../../cinema-logo.svg';
@@ -8,7 +8,7 @@ import './Header.scss';
 import { setError } from '../../redux/actions/errors';
 import { pathURL } from '../../redux/actions/routes';
 
-function Header({ searchResult, searchQuery, setMovieType, getMovies, page, totalPages, setResponsePageNumber, routesArray, path, url, pathURL, setError, errors }) {
+function Header({ searchResult, searchQuery, setMovieType, clearMovieDetails, getMovies, page, totalPages, setResponsePageNumber, routesArray, path, url, pathURL, setError, errors }) {
   let [navClass, setNavClass] = useState(false);
   let [menuClass, setMenuClass] = useState(false);
   const [type, setType] = useState('now_playing');
@@ -19,7 +19,6 @@ function Header({ searchResult, searchQuery, setMovieType, getMovies, page, tota
   const history = useHistory();
   const location = useLocation();
   const detailsRoute = useRouteMatch('/:id/:name/details');
-
   const HEADER_LIST = [
     {
       id: 1,
@@ -85,7 +84,10 @@ function Header({ searchResult, searchQuery, setMovieType, getMovies, page, tota
   }, [type, disableSearch, location, path]);
 
   const setMovieTypeUrl = (type) => {
-    setDisableSearch(false);
+    menuClass = !menuClass;
+    navClass = !navClass;
+    setNavClass(navClass);
+    setMenuClass(menuClass);
     if (location.pathname !== '/') {
       history.push('/');
       setType(type);
@@ -114,6 +116,12 @@ function Header({ searchResult, searchQuery, setMovieType, getMovies, page, tota
     searchResult(e.target.value);
   };
 
+  const navigateToMainPage = () => {
+    setDisableSearch(false);
+    clearMovieDetails();
+    history.push('/');
+  };
+
   return (
     <>
       {hideHeader && (
@@ -121,7 +129,7 @@ function Header({ searchResult, searchQuery, setMovieType, getMovies, page, tota
           <div className="header-bar">
             <div className="header-navbar">
               <div className="header-image">
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="logo" onClick={() => navigateToMainPage()} />
               </div>
               <div className={`${menuClass ? 'header-menu-toggle is-active' : 'header-menu-toggle'}`} id="header-mobile-menu" onClick={() => toggleMenu()}>
                 <span className="bar"></span>
@@ -161,7 +169,8 @@ Header.propTypes = {
   setError: PropTypes.func,
   searchQuery: PropTypes.func,
   searchResult: PropTypes.func,
-  errors: PropTypes.object
+  errors: PropTypes.object,
+  clearMovieDetails: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -173,4 +182,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { getMovies, searchQuery, setMovieType, setResponsePageNumber, setError, pathURL, searchResult })(Header);
+export default connect(mapStateToProps, { getMovies, searchQuery, setMovieType, setResponsePageNumber, clearMovieDetails, setError, pathURL, searchResult })(Header);
