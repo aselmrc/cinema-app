@@ -18,4 +18,10 @@
   margin: 0 5px;
   padding: 10px 5px; }
 
+@media only screen and (max-width: 400px) {
+  .paginate-button {
+    font-size: 15px;
+    padding: 8px 10px;
+    margin: 0px 9px; } }
+
 /*# sourceMappingURL=Paginate.css.map */
