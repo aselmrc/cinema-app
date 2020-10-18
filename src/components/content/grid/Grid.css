@@ -62,4 +62,11 @@
       color: white;
       margin-top: -3px; }
 
+@media only screen and (max-width: 400px) {
+  .grid {
+    margin: 10px 16px 50px; } }
+@media only screen and (max-width: 350px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); } }
+
 /*# sourceMappingURL=Grid.css.map */
